@@ -1,6 +1,11 @@
 <?php
 
+// use App\Http\Controllers\CatalogController;
+// use App\Http\Controllers\HomeController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'getHome']);
 
-Route::get('catalog', 'CatalogController@getIndex');
+Route::get('catalog', [CatalogController::class, 'getIndex']);
 
-Route::get('catalog/show/{id}', 'CatalogController@getShow');
+Route::get('catalog/show/{id}', [CatalogController::class, 'getShow']);
+Route::get('catalog/create', [CatalogController::class, 'getCreate']);
 
-Route::get('catalog/create', 'CatalogController@getCreate');
-
-Route::get('catalog/edit/{id}', 'CatalogController@getEdit');
+Route::get('catalog/edit/{id}', [CatalogController::class, 'getEdit']);
 
 Route::get('login', function () {
     return view('layouts.auth.login');

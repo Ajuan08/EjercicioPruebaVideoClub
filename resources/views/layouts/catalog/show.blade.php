@@ -13,7 +13,35 @@
   <body>
   @extends('layouts.master')
     @section('content')
-        <h1>Mostar Película</h1>
+    <div class="row">
+
+    <div class="col-sm-4">
+    <a href="{{ url('/catalog/show/' . $pelicula['titulo']) }}">
+      <img src="{{ asset($pelicula['poster']) }}" style="height:200px"/>
+      <h4 style="min-height:45px;margin:5px 0 10px 0">
+          {{ $pelicula['titulo'] }}
+      </h4>
+    </a>
+    </div>
+
+    <div class="col-sm-8">
+        <h2>{{ $pelicula['titulo'] }}</h2>
+        <p><strong>Año:</strong> {{ $pelicula['ano'] }}</p>
+        <p><strong>Director:</strong> {{ $pelicula['director'] }}</p>
+        <p><strong>Resumen:</strong> {{ $pelicula['resumen'] }}</p>
+        @if(isset($pelicula['rented']) && $pelicula['rented'])
+            <p><strong>Estado:</strong> Película alquilada</p>
+            <a href="#" class="btn btn-danger">Devolver película</a>
+        @else
+            <p><strong>Estado:</strong> Película disponible</p>
+            <a href="#" class="btn btn-primary">Alquilar película</a>
+        @endif
+        <button onclick="window.location.href = '{{ url('/catalog/edit/' . $pelicula['titulo']) }}';" class="btn btn-warning">Editar película</button>
+        <button onclick="window.location.href = '{{ url('/catalog') }}'"class="btn btn-secondary">Volver al listado</a>
+
+    </div>
+
+</div>
     @stop
 
     <!-- Optional JavaScript -->

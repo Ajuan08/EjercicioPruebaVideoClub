@@ -8,12 +8,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Catálogo Peículas</title>
+    <title>Catálogo Películas</title>
   </head>
   <body>
+    
   @extends('layouts.master')
     @section('content')
-        <h1>Este es el catálogo de películas</h1>
+    <div class="row">
+
+    @foreach( $arrayPeliculas as $key => $pelicula)
+    <div class="col-sm-4 text-center">
+
+    <a href="{{ url('/catalog/show/' . $key ) }}">
+        <img src="{{$pelicula['poster']}}" style="height:200px"/>
+        <h4 style="min-height:45px;margin:5px 0 10px 0">
+            {{$pelicula['titulo']}}
+        </h4>
+    </a>
+
+    </div>
+    @endforeach
+    </div>
     @stop
 
     <!-- Optional JavaScript -->

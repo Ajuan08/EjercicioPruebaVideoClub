@@ -11,10 +11,36 @@
     <title>Editar Películas</title>
   </head>
   <body>
-  @extends('layouts.master')
-    @section('content')
-        <h1>Editar Película</h1>
-    @stop
+    <div class="container">
+        <h2>Modificar película</h2>
+        <form method="POST">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="year">Año:</label>
+                <input type="text" class="form-control" id="year" name="year">
+            </div>
+            <div class="form-group">
+                <label for="director">Director:</label>
+                <input type="text" class="form-control" id="director" name="director">
+            </div>
+            <div class="form-group">
+                <label for="poster">Poster:</label>
+                <input type="text" class="form-control" id="poster" name="poster">
+            </div>
+            <div class="form-group">
+                <label for="synopsis">Resumen:</label>
+                <textarea class="form-control" id="synopsis" name="synopsis" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Modificar película</button>
+            <a href="{{ url('/catalog') }}" class="btn btn-default">Volver al catálogo</a>
+        </form>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
